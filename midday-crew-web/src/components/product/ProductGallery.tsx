@@ -14,26 +14,23 @@ export function ProductGallery({ images }: ProductGalleryProps) {
   
   if (!images || images.length === 0) {
     return (
-      <div className="w-full aspect-[4/5] bg-court-sand/20 flex items-center justify-center rounded-sm">
-        <span className="text-court-charcoal/50 font-sans">No image available</span>
+      <div className="w-full aspect-[4/5] bg-white flex items-center justify-center rounded-sm border border-court-sand/30 shadow-xs">
+        <span className="text-court-charcoal/50 font-sans tracking-widest uppercase text-sm">No image available</span>
       </div>
     );
   }
 
-  const selectedImage = images[selectedIndex];
+  const selectedImage = images[selectedIndex] || images[0];
 
   return (
     <div className="flex flex-col gap-4">
-      {/* Main Image */}
-      <div className="relative w-full aspect-square md:aspect-[4/5] bg-court-sand/20 rounded-sm overflow-hidden flex items-center justify-center">
-        {/* Placeholder text for images that might not exist locally during dev */}
-        <span className="absolute z-0 text-court-charcoal/30 font-sans text-sm">Product Image Placeholder</span>
-        
+      {/* Main Image Viewport */}
+      <div className="relative w-full aspect-square md:aspect-[4/5] bg-white rounded-sm border border-court-sand/40 shadow-xs overflow-hidden flex items-center justify-center">
         <Image
           src={selectedImage.url}
           alt={selectedImage.altText || 'Product image'}
           fill
-          className="object-cover object-center z-10"
+          className="object-contain p-8 transition-opacity duration-300"
           priority
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
@@ -41,22 +38,24 @@ export function ProductGallery({ images }: ProductGalleryProps) {
       
       {/* Thumbnails */}
       {images.length > 1 && (
-        <div className="flex gap-4 overflow-x-auto pb-2 hide-scrollbar">
+        <div className="flex gap-3 overflow-x-auto pb-2 hide-scrollbar">
           {images.map((image, index) => (
             <button
               key={index}
               onClick={() => setSelectedIndex(index)}
               className={cn(
-                "relative w-20 h-20 bg-court-sand/20 flex-none rounded-sm overflow-hidden border-2 transition-colors",
-                selectedIndex === index ? "border-court-navy" : "border-transparent"
+                "relative w-20 h-20 bg-white flex-none rounded-sm overflow-hidden transition-all duration-200",
+                selectedIndex === index 
+                  ? "border-2 border-court-navy shadow-sm" 
+                  : "border border-court-sand/50 opacity-70 hover:opacity-100 hover:border-court-navy/50"
               )}
-              aria-label={`Select image ${index + 1}`}
+              aria-label={`Select view ${index + 1}`}
             >
               <Image
                 src={image.url}
                 alt={image.altText || `Thumbnail ${index + 1}`}
                 fill
-                className="object-cover object-center"
+                className="object-contain p-2"
                 sizes="80px"
               />
             </button>

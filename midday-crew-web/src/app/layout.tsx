@@ -37,11 +37,11 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-// Placeholder components to ensure clean compilation
-const AnnouncementBar = () => <div className="bg-court-navy text-court-cream text-center text-sm py-2">Announcement</div>;
-const Header = () => <header className="p-4 bg-court-cream text-court-navy">Header</header>;
-const Footer = () => <footer className="p-4 bg-court-navy text-court-cream">Footer</footer>;
-const CartProvider = ({ children }: { children: ReactNode }) => <>{children}</>;
+import AnnouncementBar from "@/components/layout/AnnouncementBar";
+import Header from "@/components/layout/Header";
+import Footer from "@/components/layout/Footer";
+import { CartProvider } from "@/components/cart/CartProvider";
+import CartDrawer from "@/components/cart/CartDrawer";
 
 export default function RootLayout({
   children,
@@ -50,12 +50,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${playfair.variable} ${dmSans.variable}`}>
-      <body className="antialiased">
+      <body className="antialiased min-h-screen flex flex-col bg-court-cream text-court-charcoal">
         <CartProvider>
           <AnnouncementBar />
           <Header />
-          <main>{children}</main>
+          <main className="flex-1 pt-24 md:pt-28">{children}</main>
           <Footer />
+          <CartDrawer />
         </CartProvider>
       </body>
     </html>

@@ -18,7 +18,7 @@ export const PRODUCTS: Product[] = [
     tags: ['paddles', 'control', 'elongated'],
     availableForSale: true,
     priceRange: { minVariantPrice: { amount: 219.99, currencyCode: 'USD' } },
-    images: [{ url: '/images/paddles/selkirk-luxx.jpg', altText: 'Selkirk LUXX Control Air', width: 800, height: 800 }],
+    images: [{ url: '/images/paddles/selkirk-luxx.svg', altText: 'Selkirk LUXX Control Air', width: 800, height: 800 }],
     variants: [
       { id: 'v-1-1', title: 'Court Navy', availableForSale: true, price: { amount: 219.99, currencyCode: 'USD' }, selectedOptions: [{ name: 'Color', value: 'Court Navy' }] },
       { id: 'v-1-2', title: 'Court Chalk', availableForSale: true, price: { amount: 219.99, currencyCode: 'USD' }, selectedOptions: [{ name: 'Color', value: 'Court Chalk' }] },
@@ -35,7 +35,7 @@ export const PRODUCTS: Product[] = [
     tags: ['paddles', 'power'],
     availableForSale: true,
     priceRange: { minVariantPrice: { amount: 199.99, currencyCode: 'USD' } },
-    images: [{ url: '/images/paddles/selkirk-invikta.jpg', altText: 'Selkirk Vanguard Power Air Invikta', width: 800, height: 800 }],
+    images: [{ url: '/images/paddles/selkirk-invikta.svg', altText: 'Selkirk Vanguard Power Air Invikta', width: 800, height: 800 }],
     variants: [
       { id: 'v-2-1', title: 'Crimson', availableForSale: true, price: { amount: 199.99, currencyCode: 'USD' }, selectedOptions: [{ name: 'Color', value: 'Crimson' }] },
       { id: 'v-2-2', title: 'Midnight', availableForSale: true, price: { amount: 199.99, currencyCode: 'USD' }, selectedOptions: [{ name: 'Color', value: 'Midnight' }] },
@@ -52,7 +52,7 @@ export const PRODUCTS: Product[] = [
     tags: ['paddles', 'pro'],
     availableForSale: true,
     priceRange: { minVariantPrice: { amount: 239.99, currencyCode: 'USD' } },
-    images: [{ url: '/images/paddles/joola-perseus.jpg', altText: 'JOOLA Ben Johns Perseus 16mm', width: 800, height: 800 }],
+    images: [{ url: '/images/paddles/joola-perseus.svg', altText: 'JOOLA Ben Johns Perseus 16mm', width: 800, height: 800 }],
     variants: [
       { id: 'v-3-1', title: 'Blue/Gold', availableForSale: true, price: { amount: 239.99, currencyCode: 'USD' }, selectedOptions: [{ name: 'Color', value: 'Blue/Gold' }] },
       { id: 'v-3-2', title: 'Stealth Black', availableForSale: true, price: { amount: 239.99, currencyCode: 'USD' }, selectedOptions: [{ name: 'Color', value: 'Stealth Black' }] },
@@ -69,7 +69,7 @@ export const PRODUCTS: Product[] = [
     tags: ['paddles', 'speed'],
     availableForSale: true,
     priceRange: { minVariantPrice: { amount: 209.99, currencyCode: 'USD' } },
-    images: [{ url: '/images/paddles/joola-scorpeus.jpg', altText: 'JOOLA Ben Johns Scorpeus', width: 800, height: 800 }],
+    images: [{ url: '/images/paddles/joola-scorpeus.svg', altText: 'JOOLA Ben Johns Scorpeus', width: 800, height: 800 }],
     variants: [
       { id: 'v-4-1', title: 'Core Black', availableForSale: true, price: { amount: 209.99, currencyCode: 'USD' }, selectedOptions: [{ name: 'Color', value: 'Core Black' }] },
       { id: 'v-4-2', title: 'Ice Blue', availableForSale: true, price: { amount: 209.99, currencyCode: 'USD' }, selectedOptions: [{ name: 'Color', value: 'Ice Blue' }] }
@@ -85,7 +85,7 @@ export const PRODUCTS: Product[] = [
     tags: ['paddles', 'spin'],
     availableForSale: true,
     priceRange: { minVariantPrice: { amount: 229.99, currencyCode: 'USD' } },
-    images: [{ url: '/images/paddles/diadem-edge.jpg', altText: 'Diadem Edge 18K', width: 800, height: 800 }],
+    images: [{ url: '/images/paddles/diadem-edge.svg', altText: 'Diadem Edge 18K', width: 800, height: 800 }],
     variants: [
       { id: 'v-5-1', title: 'Raw Carbon', availableForSale: true, price: { amount: 229.99, currencyCode: 'USD' }, selectedOptions: [{ name: 'Color', value: 'Raw Carbon' }] },
       { id: 'v-5-2', title: 'Forest', availableForSale: true, price: { amount: 229.99, currencyCode: 'USD' }, selectedOptions: [{ name: 'Color', value: 'Forest' }] },
@@ -102,7 +102,7 @@ export const PRODUCTS: Product[] = [
     tags: ['paddles', 'control'],
     availableForSale: true,
     priceRange: { minVariantPrice: { amount: 199.99, currencyCode: 'USD' } },
-    images: [{ url: '/images/paddles/diadem-warrior.jpg', altText: 'Diadem Warrior v2', width: 800, height: 800 }],
+    images: [{ url: '/images/paddles/diadem-warrior.svg', altText: 'Diadem Warrior v2', width: 800, height: 800 }],
     variants: [
       { id: 'v-6-1', title: 'Obsidian', availableForSale: true, price: { amount: 199.99, currencyCode: 'USD' }, selectedOptions: [{ name: 'Color', value: 'Obsidian' }] },
       { id: 'v-6-2', title: 'Arctic White', availableForSale: true, price: { amount: 199.99, currencyCode: 'USD' }, selectedOptions: [{ name: 'Color', value: 'Arctic White' }] }
@@ -118,7 +118,7 @@ export const PRODUCTS: Product[] = [
     tags: ['accessories', 'bags'],
     availableForSale: true,
     priceRange: { minVariantPrice: { amount: 89.99, currencyCode: 'USD' } },
-    images: [{ url: '/images/accessories/court-bag.jpg', altText: 'Midday Crew Waxed Canvas Court Bag', width: 800, height: 800 }],
+    images: [{ url: '/images/accessories/court-bag.svg', altText: 'Midday Crew Waxed Canvas Court Bag', width: 800, height: 800 }],
     variants: [
       { id: 'v-7-1', title: 'Navy', availableForSale: true, price: { amount: 89.99, currencyCode: 'USD' }, selectedOptions: [{ name: 'Color', value: 'Navy' }] },
       { id: 'v-7-2', title: 'Sand', availableForSale: true, price: { amount: 89.99, currencyCode: 'USD' }, selectedOptions: [{ name: 'Color', value: 'Sand' }] },
@@ -135,7 +135,7 @@ export const PRODUCTS: Product[] = [
     tags: ['accessories', 'towels'],
     availableForSale: true,
     priceRange: { minVariantPrice: { amount: 34.99, currencyCode: 'USD' } },
-    images: [{ url: '/images/accessories/towel.jpg', altText: 'Midday Crew Court Towel (2-Pack)', width: 800, height: 800 }],
+    images: [{ url: '/images/accessories/towel.svg', altText: 'Midday Crew Court Towel (2-Pack)', width: 800, height: 800 }],
     variants: [
       { id: 'v-8-1', title: 'Chalk', availableForSale: true, price: { amount: 34.99, currencyCode: 'USD' }, selectedOptions: [{ name: 'Color', value: 'Chalk' }] },
       { id: 'v-8-2', title: 'Navy Stripe', availableForSale: true, price: { amount: 34.99, currencyCode: 'USD' }, selectedOptions: [{ name: 'Color', value: 'Navy Stripe' }] }
@@ -151,7 +151,7 @@ export const PRODUCTS: Product[] = [
     tags: ['accessories', 'grips'],
     availableForSale: true,
     priceRange: { minVariantPrice: { amount: 14.99, currencyCode: 'USD' } },
-    images: [{ url: '/images/accessories/overgrip.jpg', altText: 'Performance Overgrip 3-Pack', width: 800, height: 800 }],
+    images: [{ url: '/images/accessories/overgrip.svg', altText: 'Performance Overgrip 3-Pack', width: 800, height: 800 }],
     variants: [
       { id: 'v-9-1', title: 'White', availableForSale: true, price: { amount: 14.99, currencyCode: 'USD' }, selectedOptions: [{ name: 'Color', value: 'White' }] },
       { id: 'v-9-2', title: 'Black', availableForSale: true, price: { amount: 14.99, currencyCode: 'USD' }, selectedOptions: [{ name: 'Color', value: 'Black' }] }
@@ -167,7 +167,7 @@ export const PRODUCTS: Product[] = [
     tags: ['accessories', 'balls'],
     availableForSale: true,
     priceRange: { minVariantPrice: { amount: 18.99, currencyCode: 'USD' } },
-    images: [{ url: '/images/accessories/pickleballs.jpg', altText: 'Tournament Pickleballs (3-Pack)', width: 800, height: 800 }],
+    images: [{ url: '/images/accessories/pickleballs.svg', altText: 'Tournament Pickleballs (3-Pack)', width: 800, height: 800 }],
     variants: [
       { id: 'v-10-1', title: 'Dink Yellow', availableForSale: true, price: { amount: 18.99, currencyCode: 'USD' }, selectedOptions: [{ name: 'Color', value: 'Dink Yellow' }] }
     ]
@@ -182,7 +182,7 @@ export const PRODUCTS: Product[] = [
     tags: ['apparel', 'shirts'],
     availableForSale: true,
     priceRange: { minVariantPrice: { amount: 78.00, currencyCode: 'USD' } },
-    images: [{ url: '/images/apparel/court-polo.jpg', altText: 'The Court Polo', width: 800, height: 1000 }],
+    images: [{ url: '/images/apparel/court-polo.svg', altText: 'The Court Polo', width: 800, height: 1000 }],
     variants: [
       { id: 'v-11-1', title: 'Court Chalk', availableForSale: true, price: { amount: 78.00, currencyCode: 'USD' }, selectedOptions: [{ name: 'Color', value: 'Court Chalk' }] },
       { id: 'v-11-2', title: 'Navy', availableForSale: true, price: { amount: 78.00, currencyCode: 'USD' }, selectedOptions: [{ name: 'Color', value: 'Navy' }] },
@@ -200,7 +200,7 @@ export const PRODUCTS: Product[] = [
     tags: ['apparel', 'shorts'],
     availableForSale: true,
     priceRange: { minVariantPrice: { amount: 68.00, currencyCode: 'USD' } },
-    images: [{ url: '/images/apparel/court-short.jpg', altText: 'The 7" Court Short', width: 800, height: 1000 }],
+    images: [{ url: '/images/apparel/court-short.svg', altText: 'The 7" Court Short', width: 800, height: 1000 }],
     variants: [
       { id: 'v-12-1', title: 'Navy', availableForSale: true, price: { amount: 68.00, currencyCode: 'USD' }, selectedOptions: [{ name: 'Color', value: 'Navy' }] },
       { id: 'v-12-2', title: 'Sand', availableForSale: true, price: { amount: 68.00, currencyCode: 'USD' }, selectedOptions: [{ name: 'Color', value: 'Sand' }] },
@@ -217,7 +217,7 @@ export const PRODUCTS: Product[] = [
     tags: ['apparel', 'outerwear'],
     availableForSale: true,
     priceRange: { minVariantPrice: { amount: 98.00, currencyCode: 'USD' } },
-    images: [{ url: '/images/apparel/quarter-zip.jpg', altText: 'The Clubhouse Quarter-Zip', width: 800, height: 1000 }],
+    images: [{ url: '/images/apparel/quarter-zip.svg', altText: 'The Clubhouse Quarter-Zip', width: 800, height: 1000 }],
     variants: [
       { id: 'v-13-1', title: 'Heather Grey', availableForSale: true, price: { amount: 98.00, currencyCode: 'USD' }, selectedOptions: [{ name: 'Color', value: 'Heather Grey' }] },
       { id: 'v-13-2', title: 'Navy', availableForSale: true, price: { amount: 98.00, currencyCode: 'USD' }, selectedOptions: [{ name: 'Color', value: 'Navy' }] },
@@ -234,7 +234,7 @@ export const PRODUCTS: Product[] = [
     tags: ['apparel', 'hats'],
     availableForSale: true,
     priceRange: { minVariantPrice: { amount: 38.00, currencyCode: 'USD' } },
-    images: [{ url: '/images/apparel/visor.jpg', altText: 'The Midday Visor', width: 800, height: 1000 }],
+    images: [{ url: '/images/apparel/visor.svg', altText: 'The Midday Visor', width: 800, height: 1000 }],
     variants: [
       { id: 'v-14-1', title: 'Chalk', availableForSale: true, price: { amount: 38.00, currencyCode: 'USD' }, selectedOptions: [{ name: 'Color', value: 'Chalk' }] },
       { id: 'v-14-2', title: 'Navy', availableForSale: true, price: { amount: 38.00, currencyCode: 'USD' }, selectedOptions: [{ name: 'Color', value: 'Navy' }] },
@@ -269,3 +269,15 @@ export const UPSELL_PRODUCTS = [
   PRODUCTS.find(p => p.handle === 'tournament-pickleballs-3-pack')!,
   PRODUCTS.find(p => p.handle === 'midday-crew-court-towel-2-pack')!
 ];
+
+export function getProductsByQuery(query: string): Product[] {
+  const clean = query.trim().toLowerCase();
+  if (!clean) return [];
+  return PRODUCTS.filter(p => 
+    p.title.toLowerCase().includes(clean) ||
+    p.vendor.toLowerCase().includes(clean) ||
+    p.productType.toLowerCase().includes(clean) ||
+    p.description.toLowerCase().includes(clean) ||
+    p.tags.some(t => t.toLowerCase().includes(clean))
+  );
+}

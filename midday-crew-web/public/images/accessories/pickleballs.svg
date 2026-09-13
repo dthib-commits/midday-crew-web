@@ -1,0 +1,14 @@
+<svg width="800" height="800" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="800" fill="#FAF8F5"/>
+  <circle cx="400" cy="400" r="300" fill="#F4EFE6" fill-opacity="0.6"/>
+  <ellipse cx="400" cy="630" rx="220" ry="20" fill="#0A1C2A" fill-opacity="0.08"/>
+  <circle cx="280" cy="480" r="100" fill="#E2E82E" stroke="#CA8A04" stroke-width="3"/>
+  <circle cx="520" cy="480" r="100" fill="#E2E82E" stroke="#CA8A04" stroke-width="3"/>
+  <circle cx="400" cy="420" r="115" fill="#EAB308" stroke="#CA8A04" stroke-width="3"/>
+  <circle cx="360" cy="370" r="13" fill="#A16207"/>
+  <circle cx="420" cy="360" r="13" fill="#A16207"/>
+  <circle cx="465" cy="395" r="13" fill="#A16207"/>
+  <circle cx="405" cy="435" r="13" fill="#A16207"/>
+  <text x="400" y="415" text-anchor="middle" fill="#A16207" font-family="serif" font-size="13" letter-spacing="2" font-weight="700">MIDDAY</text>
+  <text x="400" y="430" text-anchor="middle" fill="#A16207" font-family="sans-serif" font-size="8" letter-spacing="1">USAPA 40</text>
+</svg>

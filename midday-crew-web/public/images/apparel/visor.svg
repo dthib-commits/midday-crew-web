@@ -1,0 +1,8 @@
+<svg width="800" height="1000" viewBox="0 0 800 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="1000" fill="#FAF8F5"/>
+  <circle cx="400" cy="500" r="360" fill="#F4EFE6" fill-opacity="0.6"/>
+  <path d="M220 480C220 420 300 370 400 370C500 370 580 420 580 480H220Z" fill="#FAF8F5" stroke="#D9D0C3" stroke-width="4"/>
+  <path d="M180 500C220 620 340 680 400 680C460 680 580 620 620 500C540 550 460 570 400 570C340 570 260 550 180 500Z" fill="#0A1C2A"/>
+  <text x="400" y="445" text-anchor="middle" fill="#0A1C2A" font-family="serif" font-size="28" letter-spacing="4" font-weight="700">MIDDAY CREW</text>
+  <text x="400" y="465" text-anchor="middle" fill="#556B55" font-family="sans-serif" font-size="10" letter-spacing="3">DALLAS, TX</text>
+</svg>

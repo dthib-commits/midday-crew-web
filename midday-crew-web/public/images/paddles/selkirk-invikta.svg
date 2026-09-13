@@ -1,0 +1,19 @@
+<svg width="800" height="800" viewBox="0 0 800 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="800" height="800" fill="#FAF8F5"/>
+  <circle cx="400" cy="400" r="320" fill="#F4EFE6" fill-opacity="0.6"/>
+  <ellipse cx="400" cy="710" rx="140" ry="18" fill="#0A1C2A" fill-opacity="0.08"/>
+  <rect x="368" y="480" width="64" height="220" rx="8" fill="#141414"/>
+  <line x1="368" y1="505" x2="432" y2="530" stroke="#C86D51" stroke-width="2.5" stroke-opacity="0.7"/>
+  <line x1="368" y1="535" x2="432" y2="560" stroke="#C86D51" stroke-width="2.5" stroke-opacity="0.7"/>
+  <line x1="368" y1="565" x2="432" y2="590" stroke="#C86D51" stroke-width="2.5" stroke-opacity="0.7"/>
+  <rect x="364" y="690" width="72" height="18" rx="6" fill="#0A1C2A" stroke="#C86D51" stroke-width="1.5"/>
+  <rect x="368" y="476" width="64" height="12" fill="#C86D51"/>
+  <rect x="260" y="90" width="280" height="410" rx="80" fill="#1A1A1A" stroke="#C86D51" stroke-width="3"/>
+  <ellipse cx="400" cy="455" rx="30" ry="16" fill="#FAF8F5" stroke="#C86D51" stroke-width="3"/>
+  <path d="M280 140L520 220" stroke="#C86D51" stroke-width="4" stroke-opacity="0.8"/>
+  <text x="400" y="270" text-anchor="middle" fill="#FFFFFF" font-family="serif" font-size="28" letter-spacing="6" font-weight="600">SELKIRK</text>
+  <text x="400" y="298" text-anchor="middle" fill="#C86D51" font-family="sans-serif" font-size="12" letter-spacing="4" font-weight="600">VANGUARD POWER AIR</text>
+  <text x="400" y="325" text-anchor="middle" fill="#D9D0C3" font-family="sans-serif" font-size="10" letter-spacing="2">INVIKTA ELONGATED • TORAY T700</text>
+  <rect x="350" y="380" width="100" height="20" rx="4" fill="#0A1C2A" stroke="#D8E038" stroke-width="1"/>
+  <text x="400" y="394" text-anchor="middle" fill="#D8E038" font-family="sans-serif" font-size="9" font-weight="700" letter-spacing="1">USAPA APPROVED</text>
+</svg>

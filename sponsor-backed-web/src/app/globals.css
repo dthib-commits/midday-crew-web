@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@theme {
+  --color-sb-navy: #141E30;
+  --color-sb-green: #1B382B;
+  --color-sb-chalk: #F4F1EA;
+  --color-sb-charcoal: #222426;
+  --color-sb-merlot: #4A1525;
+  --color-sb-brass: #C5A059;
+  --color-sb-leather: #B68D4C;
+  --color-sb-cream: #FAF9F5;
+
+  --font-serif: var(--font-playfair);
+  --font-sans: var(--font-dm-sans);
+  --font-mono: var(--font-mono);
+}
+
+:root {
+  --sb-navy: #141E30;
+  --sb-green: #1B382B;
+  --sb-chalk: #F4F1EA;
+  --sb-charcoal: #222426;
+  --sb-merlot: #4A1525;
+  --sb-brass: #C5A059;
+  --sb-leather: #B68D4C;
+  --sb-cream: #FAF9F5;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--sb-cream);
+  color: var(--sb-charcoal);
+  font-family: var(--font-sans), sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-serif {
+  font-family: var(--font-serif), Georgia, serif;
+}
+
+.font-mono {
+  font-family: var(--font-mono), monospace;
+}
+
+/* J. Crew Catalog Textures & Stamps */
+.catalog-stamp {
+  border: 1px dashed var(--sb-leather);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-family: var(--font-mono), monospace;
+}
+
+.stamp-red {
+  border: 2px solid #8A2525;
+  color: #8A2525;
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  transform: rotate(-3deg);
+  display: inline-block;
+}
+
+/* Vintage Paper Vignette */
+.paper-texture {
+  background-color: #FAF9F5;
+  background-image: radial-gradient(#E8E3D7 0.75px, transparent 0.75px);
+  background-size: 16px 16px;
+}

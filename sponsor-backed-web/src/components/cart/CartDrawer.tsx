@@ -4,7 +4,8 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useCart } from '@/lib/cart';
-import { X, Plus, Minus, Trash2, ArrowRight, ShieldCheck, FileText } from 'lucide-react';
+import { PRODUCTS } from '@/lib/products';
+import { X, Plus, Minus, ArrowRight, ShieldCheck, FileText, Check } from 'lucide-react';
 
 export function CartDrawer() {
   const {
@@ -13,9 +14,9 @@ export function CartDrawer() {
     items,
     updateQuantity,
     removeItem,
+    addItem,
     subtotal,
     freeShippingThreshold,
-    freeShippingProgress,
     giftMemo,
     setGiftMemo,
   } = useCart();
@@ -24,6 +25,11 @@ export function CartDrawer() {
   const [showGiftMemo, setShowGiftMemo] = useState(Boolean(giftMemo));
 
   if (!isOpen) return null;
+
+  const keyFob = PRODUCTS.find((p) => p.id === 'sb-acc-402');
+  const hasKeyFob = items.some((i) => i.productId === 'sb-acc-402' || i.id === 'sb-acc-402');
+  const needsFreeShippingBridge = subtotal > 0 && subtotal < freeShippingThreshold && !hasKeyFob && keyFob;
+  const remainingForFreeShipping = Math.max(0, freeShippingThreshold - subtotal);
 
   const handleCheckout = async () => {
     setIsCheckingOut(true);
@@ -48,7 +54,7 @@ export function CartDrawer() {
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-hidden">
+    <div className="fixed inset-0 z-50 overflow-hidden" role="dialog" aria-modal="true">
       {/* Backdrop */}
       <div
         onClick={closeCart}
@@ -71,27 +77,51 @@ export function CartDrawer() {
             </button>
           </div>
 
-          {/* Free Shipping Progress */}
-          <div className="bg-white px-6 py-3 border-b border-sb-charcoal/10">
-            <div className="flex justify-between text-xs text-sb-charcoal/70 mb-1.5">
-              <span>
-                {subtotal >= freeShippingThreshold ? (
-                  <strong className="text-sb-green font-medium">✓ Complimentary shipping unlocked</strong>
-                ) : (
-                  <span>
-                    Add <strong>${(freeShippingThreshold - subtotal).toFixed(0)}</strong> for free shipping
-                  </span>
-                )}
-              </span>
-              <span className="font-medium">{freeShippingProgress}%</span>
-            </div>
-            <div className="w-full bg-sb-charcoal/10 h-1 rounded-full overflow-hidden">
-              <div
-                className="bg-sb-green h-full transition-all duration-300"
-                style={{ width: `${freeShippingProgress}%` }}
-              />
-            </div>
+          {/* Luxury Allocation Note (Quiet Restraint, No Gamified Meters) */}
+          <div className="bg-white px-6 py-3 border-b border-sb-charcoal/10 text-xs">
+            {subtotal >= freeShippingThreshold ? (
+              <div className="flex items-center space-x-1.5 text-sb-green font-medium">
+                <Check className="w-3.5 h-3.5" />
+                <span>Complimentary domestic allocation included.</span>
+              </div>
+            ) : (
+              <div className="text-sb-charcoal/60 flex justify-between items-center">
+                <span>Orders over $120 ship complimentary.</span>
+                <span className="font-medium text-sb-navy">${remainingForFreeShipping.toFixed(0)} away</span>
+              </div>
+            )}
           </div>
+
+          {/* In-Cart Ledger Accelerator / Impulse Bridge SKU */}
+          {needsFreeShippingBridge && (
+            <div className="bg-[#F4F1EA] px-6 py-3 border-b border-sb-charcoal/10 flex items-center justify-between gap-3">
+              <div className="flex items-center space-x-2.5 min-w-0">
+                <div className="relative w-9 h-9 bg-sb-chalk shrink-0 overflow-hidden rounded-xs">
+                  <Image
+                    src={keyFob.images[0]}
+                    alt={keyFob.title}
+                    fill
+                    sizes="36px"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="min-w-0 text-left">
+                  <p className="text-[11px] font-medium text-sb-navy truncate">
+                    Horween Leather Crest Fob
+                  </p>
+                  <p className="text-[10px] text-sb-charcoal/50">
+                    +$20 • Qualifies your order for free shipping
+                  </p>
+                </div>
+              </div>
+              <button
+                onClick={() => addItem(keyFob)}
+                className="shrink-0 text-xs bg-sb-navy hover:bg-sb-green text-sb-chalk px-2.5 py-1.5 rounded-xs transition-colors font-medium whitespace-nowrap"
+              >
+                + Add ($20)
+              </button>
+            </div>
+          )}
 
           {/* Items */}
           <div className="flex-1 overflow-y-auto px-6 py-4 divide-y divide-sb-charcoal/10">
@@ -120,6 +150,7 @@ export function CartDrawer() {
                       src={item.image}
                       alt={item.title}
                       fill
+                      sizes="80px"
                       className="object-cover"
                     />
                   </div>

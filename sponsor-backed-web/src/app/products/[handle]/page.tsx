@@ -66,6 +66,7 @@ export default function ProductDetailPage() {
                 alt={product.title}
                 fill
                 priority
+                sizes="(max-width: 1024px) 100vw, 55vw"
                 className="object-cover"
               />
             </div>
@@ -210,6 +211,25 @@ export default function ProductDetailPage() {
                 <div className="bg-sb-green/10 text-sb-green text-xs py-2 px-3 rounded-xs text-center flex items-center justify-center gap-1.5 animate-in fade-in">
                   <Check className="w-3.5 h-3.5" />
                   <span>Added to your bag</span>
+                </div>
+              )}
+
+              {/* Outfitting the Deal Team Bridge */}
+              {product.category === 'caps' && (
+                <div className="border border-sb-charcoal/15 bg-[#FAF9F5] p-3.5 rounded-xs space-y-1 text-left mt-2">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-medium text-sb-navy">Outfitting the Deal Team?</span>
+                    <Link
+                      href={`/deal-toy?base=${product.handle}`}
+                      className="text-xs text-sb-navy hover:text-sb-leather font-medium underline underline-offset-2 flex items-center gap-0.5"
+                    >
+                      <span>Build Closing Crate</span>
+                      <ArrowRight className="w-3 h-3" />
+                    </Link>
+                  </div>
+                  <p className="text-[11px] text-sb-charcoal/60 leading-relaxed">
+                    Commission 12+ custom caps with deal codename &amp; closing date embroidery, paired with solid brass coins and 24 oz totes.
+                  </p>
                 </div>
               )}
 

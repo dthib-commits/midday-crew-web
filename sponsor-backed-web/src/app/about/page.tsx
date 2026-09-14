@@ -13,10 +13,10 @@ export default function AboutPage() {
           The Manifesto
         </p>
         <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-semibold text-sb-navy">
-          Why We Banned Meme Merch.
+          The Discipline of Quiet Capital.
         </h1>
         <p className="text-base text-sb-charcoal/70 leading-relaxed max-w-xl mx-auto">
-          Private equity represents some of the most disciplined capital allocators in the world. Yet for a decade, the merchandise available to this industry has been an embarrassment.
+          Private capital commands extraordinary rigor. We believe the goods surrounding that discipline should carry the exact same timeless authority.
         </p>
       </div>
 
@@ -25,19 +25,19 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="space-y-5 text-sm text-sb-charcoal/80 leading-relaxed">
             <h2 className="font-serif text-2xl font-semibold text-sb-navy">
-              The Two Extremes of Finance Merch
+              Craft Over Corporate Swag
             </h2>
             <p>
-              On one side sit low-end print-on-demand tees shouting <em>&ldquo;Stonks&rdquo;</em>, <em>&ldquo;Buy Low Sell High&rdquo;</em>, or neon crypto graphics. They are gag gifts bought by distant relatives that end up in donation bins within six months. No partner, VP, or serious analyst would ever wear them outside a dorm room.
+              For decades, the goods associated with corporate finance have swung between two unfortunate poles: disposable mass-produced promotional freebies that end up in landfills, or high-gloss corporate gifts that turn partners and dealmakers into walking billboards.
             </p>
             <p>
-              On the other side sits lifeless corporate offsite swag: high-end fleece vests co-branded with corporate bank logos, turning dealmakers into walking advertisements for their employers.
+              We built Sponsor Backed around an uncompromising alternative: archival American heritage goods tailored with understated insider wit and authentic manufacturing pedigree.
             </p>
             <blockquote className="border-l border-sb-charcoal/30 pl-4 py-1 italic font-serif text-sb-navy/90">
-              &ldquo;Sponsor Backed exists in the white space: authentic, understated heritage prep tailored specifically to the cultural inside jokes of the private equity class.&rdquo;
+              &ldquo;When you wear a Sponsor Backed cap, 98% of the public sees an impeccably broken-in vintage American ballcap. To fellow allocators in Greenwich, Midtown, Dallas, or Chicago, it is an unmistakable nod.&rdquo;
             </blockquote>
             <p>
-              When you wear a Sponsor Backed cap, 98% of the public sees a classic, broken-in American dad hat. But to fellow allocators in Greenwich, Midtown, Dallas, or Chicago, it is an unmistakable nod.
+              Every piece is designed to wear like an heirloom from day one — softened by stone-enzyme washes, reinforced with heavy thread tension, and finished with solid antique brass hardware.
             </p>
           </div>
 
@@ -46,6 +46,7 @@ export default function AboutPage() {
               src="/images/sponsor_backed_cap.jpg"
               alt="Sponsor Backed Chino Cap on Boardroom Table"
               fill
+              sizes="(max-width: 1024px) 100vw, 50vw"
               className="object-cover"
             />
           </div>
@@ -63,7 +64,7 @@ export default function AboutPage() {
               {MANUFACTURED_BY}
             </h2>
             <p className="text-sm text-sb-charcoal/70 leading-relaxed">
-              Unlike digital apparel brands that drop-ship blind polyester blanks from overseas brokers, Sponsor Backed is tethered directly to commercial headwear manufacturing in Dallas, Texas.
+              Sponsor Backed is tethered directly to commercial headwear manufacturing at The Hat Company in Dallas, Texas. No anonymous brokers or third-party print-on-demand shortcuts.
             </p>
           </div>
 
@@ -73,7 +74,7 @@ export default function AboutPage() {
                 Multi-Head Ricoma Rigs
               </h3>
               <p className="text-xs text-sb-charcoal/60 leading-relaxed">
-                Industrial embroidery heads running with tight mechanical tension to prevent puckering or thread fraying wash after wash.
+                Industrial embroidery heads running with calibrated mechanical tension to prevent puckering or thread fraying wash after wash.
               </p>
             </div>
             <div className="space-y-2">
@@ -105,7 +106,7 @@ export default function AboutPage() {
           href="/catalog"
           className="inline-flex items-center space-x-2 bg-sb-navy hover:bg-sb-green text-sb-chalk px-6 py-3 text-sm font-medium transition-colors"
         >
-          <span>View All 14 Pieces</span>
+          <span>View All 15 Pieces</span>
           <ArrowRight className="w-4 h-4" />
         </Link>
       </div>

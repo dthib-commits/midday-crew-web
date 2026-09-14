@@ -18,6 +18,7 @@ export default function HomePage() {
             alt="The Sponsor Backed Broken-In Chino Cap"
             fill
             priority
+            sizes="100vw"
             className="object-cover"
           />
           {/* Gradient overlay */}
@@ -34,7 +35,7 @@ export default function HomePage() {
                   Fine Goods for the Dealmaking Class.
                 </h1>
                 <p className="text-sm sm:text-base text-sb-chalk/80 leading-relaxed max-w-md">
-                  Broken-in chino twill, 24 oz duck canvas, and quiet insider wit. Zero meme merch.
+                  Broken-in chino twill, 24 oz duck canvas, and quiet insider wit. Archival American craftsmanship.
                 </p>
                 <Link
                   href="/catalog"

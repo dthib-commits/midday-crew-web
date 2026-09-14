@@ -8,7 +8,6 @@ export interface Product {
   handle: string;
   category: Category;
   price: number;
-  wholesaleCost: number;
   colorway: string;
   threadColor: string;
   undervisorColor: string;

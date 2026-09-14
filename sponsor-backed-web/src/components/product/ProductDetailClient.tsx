@@ -5,9 +5,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useCart } from '@/lib/cart';
 import { Product } from '@/lib/types';
+import { PRODUCTS } from '@/lib/products';
 import { SizeGuideModal } from '@/components/product/SizeGuideModal';
 import { ProductCard } from '@/components/catalog/ProductCard';
-import { Plus, Minus, Ruler, Check, ArrowRight, Shield } from 'lucide-react';
+import { Plus, Minus, Ruler, Check, ArrowRight, Shield, Sparkles } from 'lucide-react';
 
 interface ProductDetailClientProps {
   product: Product;
@@ -24,6 +25,8 @@ export function ProductDetailClient({ product, relatedProducts }: ProductDetailC
   const [customMonogram, setCustomMonogram] = useState('');
   const [showMonogram, setShowMonogram] = useState(false);
   const [addedToast, setAddedToast] = useState(false);
+  const [addedFobToast, setAddedFobToast] = useState(false);
+  const keyFob = PRODUCTS.find((p) => p.id === 'sb-acc-402');
 
   const handleAddToBag = () => {
     addItem(product, {
@@ -205,6 +208,49 @@ export function ProductDetailClient({ product, relatedProducts }: ProductDetailC
                 </div>
               )}
 
+              {/* 1-Click Impulse Cross-Sell Bridge (AOV Driver) */}
+              {product.id !== 'sb-acc-402' && keyFob && (
+                <div className="border border-sb-charcoal/15 bg-white p-3 rounded-xs flex items-center justify-between gap-3">
+                  <div className="flex items-center space-x-2.5 min-w-0">
+                    <div className="relative w-9 h-9 bg-sb-chalk shrink-0 overflow-hidden rounded-xs">
+                      <Image
+                        src={keyFob.images[0]}
+                        alt={keyFob.title}
+                        fill
+                        sizes="36px"
+                        className="object-cover"
+                      />
+                    </div>
+                    <div className="min-w-0 text-left">
+                      <p className="text-[11px] font-medium text-sb-navy truncate">
+                        Pair with Horween Leather Crest Fob
+                      </p>
+                      <p className="text-[10px] text-sb-charcoal/60">
+                        Chicago Chromexcel &amp; Brass (+$20)
+                      </p>
+                    </div>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      addItem(keyFob);
+                      setAddedFobToast(true);
+                      setTimeout(() => setAddedFobToast(false), 2500);
+                    }}
+                    className="shrink-0 text-xs border border-sb-navy text-sb-navy hover:bg-sb-navy hover:text-sb-chalk px-2.5 py-1.5 rounded-xs transition-colors font-medium whitespace-nowrap"
+                  >
+                    + Add ($20)
+                  </button>
+                </div>
+              )}
+
+              {addedFobToast && (
+                <div className="bg-sb-green/10 text-sb-green text-xs py-1.5 px-3 rounded-xs text-center flex items-center justify-center gap-1.5 animate-in fade-in">
+                  <Check className="w-3.5 h-3.5" />
+                  <span>Leather Crest Fob added to bag</span>
+                </div>
+              )}
+
               {/* Outfitting the Deal Team Bridge */}
               {product.category === 'caps' && (
                 <div className="border border-sb-charcoal/15 bg-[#FAF9F5] p-3.5 rounded-xs space-y-1 text-left mt-2">
@@ -225,8 +271,24 @@ export function ProductDetailClient({ product, relatedProducts }: ProductDetailC
               )}
 
               <p className="text-[11px] text-center text-sb-charcoal/50">
-                Complimentary shipping on orders over $120. Returns accepted within 30 days.
+                Complimentary allocation on orders over $120. Returns accepted within 30 days.
               </p>
+
+              {/* Institutional Assurance Strip */}
+              <div className="grid grid-cols-3 gap-2 pt-3 border-t border-sb-charcoal/10 text-center text-[10px] text-sb-charcoal/60">
+                <div className="space-y-0.5">
+                  <span className="font-medium text-sb-navy block">Dallas Direct</span>
+                  <span>Embroidered &amp; QC'd in TX</span>
+                </div>
+                <div className="space-y-0.5">
+                  <span className="font-medium text-sb-navy block">24h Dispatch</span>
+                  <span>Archival gift packaging</span>
+                </div>
+                <div className="space-y-0.5">
+                  <span className="font-medium text-sb-navy block">Effortless Returns</span>
+                  <span>30 days, prepaid domestic</span>
+                </div>
+              </div>
             </div>
 
             {/* Construction Specs */}

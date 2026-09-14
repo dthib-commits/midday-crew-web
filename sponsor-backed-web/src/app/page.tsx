@@ -60,6 +60,30 @@ export default function HomePage() {
         </p>
       </section>
 
+      {/* Provenance & Institutional Trust Bar */}
+      <section className="border-y border-sb-charcoal/10 bg-[#FAF9F5] py-5">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            <div>
+              <p className="text-xs font-medium uppercase tracking-wider text-sb-navy">Dallas Commercial Mill</p>
+              <p className="text-[11px] text-sb-charcoal/60 mt-0.5">The Hat Company embroidery floor</p>
+            </div>
+            <div>
+              <p className="text-xs font-medium uppercase tracking-wider text-sb-navy">24 oz Duck Canvas</p>
+              <p className="text-[11px] text-sb-charcoal/60 mt-0.5">Heavy industrial maritime gauge</p>
+            </div>
+            <div>
+              <p className="text-xs font-medium uppercase tracking-wider text-sb-navy">M&amp;A Closing Crates</p>
+              <p className="text-[11px] text-sb-charcoal/60 mt-0.5">Bespoke 7-day deal turnaround</p>
+            </div>
+            <div>
+              <p className="text-xs font-medium uppercase tracking-wider text-sb-navy">Complimentary Allocation</p>
+              <p className="text-[11px] text-sb-charcoal/60 mt-0.5">Domestic shipping on orders $120+</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Featured Products — Clean grid, no section chrome */}
       <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-end justify-between mb-8">

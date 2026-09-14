@@ -45,7 +45,7 @@ body {
   font-family: var(--font-mono), monospace;
 }
 
-/* J. Crew Catalog Textures & Stamps */
+/* Heritage Catalog Textures & Stamps */
 .catalog-stamp {
   border: 1px dashed var(--sb-leather);
   text-transform: uppercase;

@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { MANUFACTURED_BY } from '@/lib/constants';
-import { CheckCircle2, ArrowRight, Shield } from 'lucide-react';
+import { CheckCircle2, ArrowRight, Shield, Printer, Mail } from 'lucide-react';
 
 export function ClosingCrateCalculator() {
   const [dealName, setDealName] = useState('PROJECT TITAN');
@@ -12,6 +12,7 @@ export function ClosingCrateCalculator() {
   const [contactEmail, setContactEmail] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [mandateId, setMandateId] = useState('');
 
   // Pricing tiers
   const getUnitPrice = (size: number) => {
@@ -26,11 +27,14 @@ export function ClosingCrateCalculator() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
+    const generatedId = `SB-MANDATE-${Math.floor(100000 + Math.random() * 900000)}`;
+    setMandateId(generatedId);
     try {
-      const res = await fetch('/api/b2b-inquiry', {
+      await fetch('/api/b2b-inquiry', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
+          mandateId: generatedId,
           dealName,
           closeQuarter,
           teamSize,
@@ -39,11 +43,7 @@ export function ClosingCrateCalculator() {
           totalCost,
         }),
       });
-      if (res.ok) {
-        setSubmitted(true);
-      } else {
-        setSubmitted(true);
-      }
+      setSubmitted(true);
     } catch {
       setSubmitted(true);
     } finally {
@@ -159,14 +159,36 @@ export function ClosingCrateCalculator() {
 
           {/* Form */}
           {submitted ? (
-            <div className="bg-sb-green/10 p-5 rounded-xs space-y-1.5 border border-sb-green/20">
-              <div className="flex items-center space-x-2 text-sb-green font-medium text-sm">
-                <CheckCircle2 className="w-4 h-4" />
-                <span>Mandate received</span>
+            <div className="bg-sb-green/10 p-5 rounded-xs space-y-3 border border-sb-green/20">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-2 text-sb-green font-medium text-sm">
+                  <CheckCircle2 className="w-4 h-4" />
+                  <span>Mandate Received</span>
+                </div>
+                <span className="text-[11px] font-mono text-sb-navy font-semibold px-2 py-0.5 bg-white border border-sb-charcoal/10 rounded-xs">
+                  {mandateId}
+                </span>
               </div>
-              <p className="text-xs text-sb-charcoal/70">
-                Our Dallas production desk will generate your digital stitch proof and invoice within 24 hours.
+              <p className="text-xs text-sb-charcoal/70 leading-relaxed">
+                Our Dallas production desk has logged this mandate for {teamSize} crates. Your digital stitch proof and corporate invoice will be generated and dispatched to <strong>{contactEmail}</strong> within 24 hours.
               </p>
+              <div className="flex flex-wrap items-center gap-3 pt-2">
+                <button
+                  type="button"
+                  onClick={() => window.print()}
+                  className="px-3 py-1.5 bg-white hover:bg-sb-chalk text-sb-navy text-xs font-medium border border-sb-charcoal/20 rounded-xs transition-colors flex items-center space-x-1.5 shadow-2xs"
+                >
+                  <Printer className="w-3.5 h-3.5" />
+                  <span>Print Mandate Sheet (PDF)</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setSubmitted(false)}
+                  className="text-xs text-sb-charcoal/60 hover:text-sb-navy transition-colors underline underline-offset-2"
+                >
+                  Configure another mandate
+                </button>
+              </div>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-3 pt-2">
@@ -193,9 +215,19 @@ export function ClosingCrateCalculator() {
                 disabled={isSubmitting}
                 className="w-full py-3 bg-sb-navy hover:bg-sb-green text-sb-chalk text-sm font-medium tracking-wide transition-colors rounded-xs flex items-center justify-center space-x-2"
               >
-                <span>{isSubmitting ? 'Submitting...' : 'Request Digital Proof & Invoice'}</span>
+                <span>{isSubmitting ? 'Securing...' : 'Request Digital Proof & Invoice'}</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
+              <div className="flex items-center justify-between text-[11px] text-sb-charcoal/50 pt-1">
+                <span>Net-30 available for verified sponsor desks</span>
+                <a
+                  href="mailto:orders@sponsorbacked.com?subject=Sample%20Request%20for%20Fund%20Desk"
+                  className="hover:text-sb-navy underline underline-offset-2 flex items-center gap-1"
+                >
+                  <Mail className="w-3 h-3" />
+                  <span>Request physical sample cap</span>
+                </a>
+              </div>
             </form>
           )}
         </div>

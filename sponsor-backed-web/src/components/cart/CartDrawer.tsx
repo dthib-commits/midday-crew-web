@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useCart } from '@/lib/cart';
@@ -23,6 +23,33 @@ export function CartDrawer() {
 
   const [isCheckingOut, setIsCheckingOut] = useState(false);
   const [showGiftMemo, setShowGiftMemo] = useState(Boolean(giftMemo));
+
+  const drawerRef = useRef<HTMLDivElement>(null);
+
+  // Body scroll lock
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+      return () => { document.body.style.overflow = ''; };
+    }
+  }, [isOpen]);
+
+  // Escape key listener
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeCart();
+    };
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [isOpen, closeCart]);
+
+  // Focus trap: focus the drawer panel when it opens
+  useEffect(() => {
+    if (isOpen && drawerRef.current) {
+      drawerRef.current.focus();
+    }
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -54,7 +81,7 @@ export function CartDrawer() {
   };
 
   return (
-    <div className="fixed inset-0 z-50 overflow-hidden" role="dialog" aria-modal="true">
+    <div className="fixed inset-0 z-50 overflow-hidden" role="dialog" aria-modal="true" aria-labelledby="cart-drawer-title">
       {/* Backdrop */}
       <div
         onClick={closeCart}
@@ -62,10 +89,10 @@ export function CartDrawer() {
       />
 
       <div className="fixed inset-y-0 right-0 max-w-full flex pl-10">
-        <div className="w-screen max-w-md bg-[#FAF9F5] border-l border-sb-charcoal/10 shadow-2xl flex flex-col">
+        <div ref={drawerRef} tabIndex={-1} className="w-screen max-w-md bg-[#FAF9F5] border-l border-sb-charcoal/10 shadow-2xl flex flex-col focus:outline-none">
           {/* Header */}
           <div className="px-6 py-5 border-b border-sb-charcoal/10 flex items-center justify-between">
-            <h2 className="font-serif text-lg font-semibold text-sb-navy">
+            <h2 id="cart-drawer-title" className="font-serif text-lg font-semibold text-sb-navy">
               Shopping Bag ({items.reduce((acc, i) => acc + i.quantity, 0)})
             </h2>
             <button

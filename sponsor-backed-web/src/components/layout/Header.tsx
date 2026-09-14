@@ -48,9 +48,9 @@ export function Header() {
 
         {/* Center Wordmark */}
         <Link href="/" className="absolute left-1/2 -translate-x-1/2">
-          <h1 className="font-serif text-xl sm:text-[22px] font-semibold tracking-[0.12em] text-sb-navy uppercase whitespace-nowrap">
+          <span className="font-serif text-xl sm:text-[22px] font-semibold tracking-[0.12em] text-sb-navy uppercase whitespace-nowrap">
             Sponsor Backed
-          </h1>
+          </span>
         </Link>
 
         {/* Right: Cart */}

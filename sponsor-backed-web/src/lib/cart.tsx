@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState, useMemo, useCallback } from 'react';
 import { CartItem, Product } from './types';
 
 interface CartContextType {
@@ -52,10 +52,10 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     }
   }, [items, giftMemo, mounted]);
 
-  const openCart = () => setIsOpen(true);
-  const closeCart = () => setIsOpen(false);
+  const openCart = useCallback(() => setIsOpen(true), []);
+  const closeCart = useCallback(() => setIsOpen(false), []);
 
-  const addItem = (product: Product, options?: { size?: string; customMonogram?: string; quantity?: number }) => {
+  const addItem = useCallback((product: Product, options?: { size?: string; customMonogram?: string; quantity?: number }) => {
     const qty = options?.quantity || 1;
     const size = options?.size || (product.sizes ? product.sizes[0] : undefined);
     const customMonogram = options?.customMonogram;
@@ -86,47 +86,47 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     });
 
     setIsOpen(true);
-  };
+  }, []);
 
-  const removeItem = (id: string) => {
+  const removeItem = useCallback((id: string) => {
     setItems((prev) => prev.filter((item) => item.id !== id));
-  };
+  }, []);
 
-  const updateQuantity = (id: string, quantity: number) => {
+  const updateQuantity = useCallback((id: string, quantity: number) => {
     if (quantity <= 0) {
-      removeItem(id);
+      setItems((prev) => prev.filter((item) => item.id !== id));
       return;
     }
     setItems((prev) =>
       prev.map((item) => (item.id === id ? { ...item, quantity } : item))
     );
-  };
+  }, []);
 
-  const clearCart = () => setItems([]);
+  const clearCart = useCallback(() => setItems([]), []);
 
   const subtotal = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
   const itemCount = items.reduce((sum, item) => sum + item.quantity, 0);
   const freeShippingProgress = Math.min(100, Math.round((subtotal / FREE_SHIPPING_THRESHOLD) * 100));
 
+  const contextValue = useMemo(() => ({
+    items,
+    isOpen,
+    openCart,
+    closeCart,
+    addItem,
+    removeItem,
+    updateQuantity,
+    clearCart,
+    subtotal,
+    itemCount,
+    freeShippingThreshold: FREE_SHIPPING_THRESHOLD,
+    freeShippingProgress,
+    giftMemo,
+    setGiftMemo,
+  }), [items, isOpen, openCart, closeCart, addItem, removeItem, updateQuantity, clearCart, subtotal, itemCount, freeShippingProgress, giftMemo, setGiftMemo]);
+
   return (
-    <CartContext.Provider
-      value={{
-        items,
-        isOpen,
-        openCart,
-        closeCart,
-        addItem,
-        removeItem,
-        updateQuantity,
-        clearCart,
-        subtotal,
-        itemCount,
-        freeShippingThreshold: FREE_SHIPPING_THRESHOLD,
-        freeShippingProgress,
-        giftMemo,
-        setGiftMemo,
-      }}
-    >
+    <CartContext.Provider value={contextValue}>
       {children}
     </CartContext.Provider>
   );

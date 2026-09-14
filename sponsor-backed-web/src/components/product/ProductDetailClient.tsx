@@ -8,6 +8,7 @@ import { Product } from '@/lib/types';
 import { PRODUCTS } from '@/lib/products';
 import { SizeGuideModal } from '@/components/product/SizeGuideModal';
 import { ProductCard } from '@/components/catalog/ProductCard';
+import { ShareWidget } from '@/components/product/ShareWidget';
 import { Plus, Minus, Ruler, Check, ArrowRight, Shield, Sparkles } from 'lucide-react';
 
 interface ProductDetailClientProps {
@@ -17,6 +18,7 @@ interface ProductDetailClientProps {
 
 export function ProductDetailClient({ product, relatedProducts }: ProductDetailClientProps) {
   const { addItem } = useCart();
+  const [selectedImage, setSelectedImage] = useState(0);
   const [selectedSize, setSelectedSize] = useState<string>(
     product?.sizes ? product.sizes[0] : ''
   );
@@ -54,15 +56,40 @@ export function ProductDetailClient({ product, relatedProducts }: ProductDetailC
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
           {/* Left: Product Imagery */}
           <div className="lg:col-span-7 space-y-4">
-            <div className="relative aspect-4/3 overflow-hidden bg-sb-chalk">
-              <Image
-                src={product.images[0] || '/images/sponsor_backed_cap.jpg'}
-                alt={product.title}
-                fill
-                priority
-                sizes="(max-width: 1024px) 100vw, 55vw"
-                className="object-cover"
-              />
+            <div className="space-y-3">
+              <div className="relative aspect-4/3 overflow-hidden bg-sb-chalk">
+                <Image
+                  src={product.images[selectedImage] || '/images/sponsor_backed_cap.jpg'}
+                  alt={`${product.title} - Image ${selectedImage + 1}`}
+                  fill
+                  priority
+                  sizes="(max-width: 1024px) 100vw, 55vw"
+                  className="object-cover"
+                />
+              </div>
+              {product.images.length > 1 && (
+                <div className="flex space-x-2 overflow-x-auto pb-1">
+                  {product.images.map((img, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => setSelectedImage(idx)}
+                      className={`relative w-16 h-16 shrink-0 overflow-hidden bg-sb-chalk border-2 transition-colors ${
+                        selectedImage === idx
+                          ? 'border-sb-navy'
+                          : 'border-transparent hover:border-sb-charcoal/20'
+                      }`}
+                    >
+                      <Image
+                        src={img}
+                        alt={`${product.title} thumbnail ${idx + 1}`}
+                        fill
+                        sizes="64px"
+                        className="object-cover"
+                      />
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
             
             {/* Subtle Provenance Note */}
@@ -319,6 +346,7 @@ export function ProductDetailClient({ product, relatedProducts }: ProductDetailC
                 ))}
               </ul>
             </div>
+            <ShareWidget title={product.title} handle={product.handle} />
           </div>
         </div>
 

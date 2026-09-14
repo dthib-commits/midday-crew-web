@@ -9,6 +9,7 @@ import { ShoppingBag, Menu, X } from 'lucide-react';
 const NAV_ITEMS = [
   { href: '/catalog', label: 'Shop' },
   { href: '/deal-toy', label: 'Corporate' },
+  { href: '/wire', label: 'The Wire' },
   { href: '/about', label: 'About' },
 ];
 

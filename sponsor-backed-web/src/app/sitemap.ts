@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { PRODUCTS } from '@/lib/products';
+import { WIRE_POSTS } from '@/lib/wire';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://sponsorbacked.com';
@@ -19,6 +20,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
     {
       url: `${baseUrl}/deal-toy`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly',
+      priority: 0.9,
+    },
+    {
+      url: `${baseUrl}/wire`,
       lastModified: new Date(),
       changeFrequency: 'weekly',
       priority: 0.9,
@@ -44,5 +51,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticRoutes, ...productRoutes];
+  const wireRoutes: MetadataRoute.Sitemap = WIRE_POSTS.map((post) => ({
+    url: `${baseUrl}/wire/${post.slug}`,
+    lastModified: new Date(post.date),
+    changeFrequency: 'monthly',
+    priority: 0.8,
+  }));
+
+  return [...staticRoutes, ...productRoutes, ...wireRoutes];
 }

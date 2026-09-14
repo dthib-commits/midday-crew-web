@@ -20,7 +20,7 @@ export const PRODUCTS: Product[] = [
       'We start with 100% long-staple cotton chino twill, put it through a 45-minute stone enzyme wash, and stitch "SPONSOR BACKED" arched across the crown in vintage ecru thread. The underside of the bill features our signature dark Augusta Green cotton twill.',
     stylingNotes:
       'An unbuttoned pale-blue Oxford, weathered chinos, and an early morning coffee run before markets open.',
-    images: ['/images/sponsor_backed_cap.jpg'],
+    images: ['/images/sponsor_backed_cap.jpg', '/images/lifestyle_cap_desk.jpg', '/images/lifestyle_cap_portrait.jpg', '/images/detail_macro_brass.jpg'],
     badges: ['Flagship'],
     inStock: true,
     featured: true,
@@ -336,7 +336,7 @@ export const PRODUCTS: Product[] = [
     catalogStory:
       'Reinforced with double-stitched contrast webbing handles that wrap entirely around the base. Embroidered above the exterior slip pocket with "DATA ROOM". Fits laptops, prospectuses, and weekend kit.',
     stylingNotes: 'The definitive commuter and weekend travel companion.',
-    images: ['/images/data_room_boat_tote.jpg'],
+    images: ['/images/data_room_boat_tote.jpg', '/images/lifestyle_tote_car.jpg'],
     badges: ['24 oz Canvas'],
     inStock: true,
     featured: true,

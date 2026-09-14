@@ -1,22 +1,11 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Link from 'next/link';
 import { FOOTER_LINKS } from '@/lib/constants';
-import { ArrowRight, CheckCircle2 } from 'lucide-react';
+import { EmailCapture } from './EmailCapture';
 
 export function Footer() {
-  const [email, setEmail] = useState('');
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (email) {
-      setSubmitted(true);
-      setEmail('');
-    }
-  };
-
   return (
     <footer className="bg-sb-navy text-sb-chalk pt-16 pb-10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -59,37 +48,8 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Newsletter */}
-          <div className="md:col-span-4 space-y-3">
-            <h3 className="text-xs font-medium tracking-wider uppercase text-sb-chalk/40">
-              The Allocation List
-            </h3>
-            <p className="text-sm text-sb-chalk/60">
-              New drops and limited runs. Quarterly, never more.
-            </p>
-            {submitted ? (
-              <div className="flex items-center space-x-2 text-sm text-sb-brass">
-                <CheckCircle2 className="w-4 h-4" />
-                <span>Welcome aboard.</span>
-              </div>
-            ) : (
-              <form onSubmit={handleSubmit} className="flex">
-                <input
-                  type="email"
-                  required
-                  placeholder="you@fund.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="bg-sb-chalk/10 border border-sb-chalk/15 text-sb-chalk placeholder-sb-chalk/30 px-3 py-2 text-sm w-full focus:outline-none focus:border-sb-chalk/40 rounded-l-sm"
-                />
-                <button
-                  type="submit"
-                  className="bg-sb-chalk/15 hover:bg-sb-chalk/25 text-sb-chalk px-3 py-2 border border-sb-chalk/15 border-l-0 rounded-r-sm transition-colors"
-                >
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              </form>
-            )}
+          <div className="md:col-span-4">
+            <EmailCapture />
           </div>
         </div>
 

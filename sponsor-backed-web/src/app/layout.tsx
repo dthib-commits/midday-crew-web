@@ -6,6 +6,8 @@ import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { CartProvider } from '@/lib/cart';
 import { CartDrawer } from '@/components/cart/CartDrawer';
+import { WelcomeBanner } from '@/components/layout/WelcomeBanner';
+import { Analytics } from '@/components/analytics/Analytics';
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -98,6 +100,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdOrg) }}
         />
+        <Analytics />
       </head>
       <body className="flex flex-col min-h-screen bg-sb-cream text-sb-charcoal antialiased">
         <CartProvider>
@@ -106,6 +109,7 @@ export default function RootLayout({
           <main className="flex-1">{children}</main>
           <Footer />
           <CartDrawer />
+          <WelcomeBanner />
         </CartProvider>
       </body>
     </html>

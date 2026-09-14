@@ -1,12 +1,12 @@
 'use client';
 
-import React, { useState, useEffect, Suspense } from 'react';
+import React, { useState, useEffect, useMemo, Suspense } from 'react';
 import { useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getProductsByCategory } from '@/lib/products';
 import { Category } from '@/lib/types';
-import { FilterBar } from '@/components/catalog/FilterBar';
+import { FilterBar, SortOption } from '@/components/catalog/FilterBar';
 import { ProductCard } from '@/components/catalog/ProductCard';
 import { useCart } from '@/lib/cart';
 import { CheckCircle2, ArrowRight } from 'lucide-react';
@@ -18,6 +18,7 @@ function CatalogContent() {
 
   const [category, setCategory] = useState<Category>(initialCategory);
   const [viewMode, setViewMode] = useState<'grid' | 'catalog'>('grid');
+  const [sortBy, setSortBy] = useState<SortOption>('featured');
   const { addItem } = useCart();
 
   useEffect(() => {
@@ -25,7 +26,15 @@ function CatalogContent() {
     if (cat) setCategory(cat);
   }, [searchParams]);
 
-  const filteredProducts = getProductsByCategory(category);
+  const filteredProducts = useMemo(() => {
+    const prods = [...getProductsByCategory(category)];
+    if (sortBy === 'price-asc') {
+      return prods.sort((a, b) => a.price - b.price);
+    } else if (sortBy === 'price-desc') {
+      return prods.sort((a, b) => b.price - a.price);
+    }
+    return prods;
+  }, [category, sortBy]);
 
   return (
     <div className="pb-24">
@@ -53,6 +62,8 @@ function CatalogContent() {
         onSelectCategory={setCategory}
         viewMode={viewMode}
         onToggleViewMode={setViewMode}
+        sortBy={sortBy}
+        onSelectSort={setSortBy}
         totalCount={filteredProducts.length}
       />
 

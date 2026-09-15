@@ -1,6 +1,7 @@
 export const SITE_NAME = 'SPONSOR BACKED';
 export const SITE_TAGLINE = 'Fine Headwear & Heritage Goods for the Dealmaking Class';
 export const SITE_URL = 'https://sponsorbacked.com';
+export const FREE_SHIPPING_THRESHOLD = 120.0;
 
 export const MANUFACTURED_BY = 'Crafted in Dallas, Texas by The Hat Company';
 
@@ -32,6 +33,7 @@ export const FOOTER_LINKS = {
     { href: '/deal-toy', label: 'The Deal Toy 2.0 (B2B)' },
     { href: '/about', label: 'The Dallas Facility (Hatco)' },
     { href: '/sizing', label: 'Garment & Cap Dimensions' },
+    { href: '/shipping', label: 'Shipping & Returns' },
     { href: '/about#craft', label: 'Embroidery Tolerances' },
   ],
   dealDesk: [

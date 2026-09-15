@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { PRODUCTS } from '@/lib/products';
+import { FREE_SHIPPING_THRESHOLD } from '@/lib/constants';
 
 export async function POST(req: Request) {
   try {
@@ -30,6 +31,13 @@ export async function POST(req: Request) {
       validatedLineItems.push({ product: catalogProduct, item: { ...item, quantity: qty } });
     }
 
+    // Calculate server-side subtotal for free shipping check
+    const subtotal = validatedLineItems.reduce(
+      (sum, { product, item }) => sum + product.price * item.quantity,
+      0
+    );
+    const qualifiesForFreeShipping = subtotal >= FREE_SHIPPING_THRESHOLD;
+
     const stripeKey = process.env.STRIPE_SECRET_KEY;
 
     if (stripeKey && !stripeKey.startsWith('mock_')) {
@@ -53,6 +61,50 @@ export async function POST(req: Request) {
         quantity: item.quantity,
       }));
 
+      // Build shipping options
+      const shippingOptions: Stripe.Checkout.SessionCreateParams.ShippingOption[] = [];
+
+      if (qualifiesForFreeShipping) {
+        // Free shipping as first (default) option
+        shippingOptions.push({
+          shipping_rate_data: {
+            type: 'fixed_amount',
+            fixed_amount: { amount: 0, currency: 'usd' },
+            display_name: 'Complimentary Domestic Allocation',
+            delivery_estimate: {
+              minimum: { unit: 'business_day', value: 2 },
+              maximum: { unit: 'business_day', value: 4 },
+            },
+          },
+        });
+      } else {
+        // Standard paid shipping
+        shippingOptions.push({
+          shipping_rate_data: {
+            type: 'fixed_amount',
+            fixed_amount: { amount: 595, currency: 'usd' },
+            display_name: 'Standard Shipping (USPS Priority)',
+            delivery_estimate: {
+              minimum: { unit: 'business_day', value: 2 },
+              maximum: { unit: 'business_day', value: 4 },
+            },
+          },
+        });
+      }
+
+      // Always offer expedited
+      shippingOptions.push({
+        shipping_rate_data: {
+          type: 'fixed_amount',
+          fixed_amount: { amount: 1295, currency: 'usd' },
+          display_name: 'Express Shipping (USPS Priority Express)',
+          delivery_estimate: {
+            minimum: { unit: 'business_day', value: 1 },
+            maximum: { unit: 'business_day', value: 2 },
+          },
+        },
+      });
+
       const origin = req.headers.get('origin') || 'https://sponsorbacked.com';
 
       const session = await stripe.checkout.sessions.create({
@@ -60,8 +112,9 @@ export async function POST(req: Request) {
         line_items: lineItems,
         mode: 'payment',
         shipping_address_collection: {
-          allowed_countries: ['US', 'CA', 'GB'],
+          allowed_countries: ['US'],
         },
+        shipping_options: shippingOptions,
         metadata: {
           giftMemo: giftMemo ? String(giftMemo).slice(0, 500) : '',
           source: 'sponsorbacked.com',
